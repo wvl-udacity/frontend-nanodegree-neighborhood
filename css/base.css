@@ -1,13 +1,16 @@
-html, body {
+html,
+body {
   width: 100%;
-  margin: 0px;
+  height: 100%;
+  margin: 0;
 }
 
-.map-canvas {
-  width: 100%;
+ul {
+  margin: 0;
+  padding: 15px;
 }
 
-#filter_input {
+.filter_input {
   position: absolute;
   top: 50px;
   left: 50px;
@@ -17,35 +20,33 @@ html, body {
   width: 300px;
 }
 
-/* Full-screen map with a floating list view on the right */
+/* Map with a width of 80% of the screen, with the list view on the right */
 @media (min-width: 700px) {
-  html, body {
-    height: 100%;
-  }
-
   .map-canvas {
+    width: 80%;
     height: 100%;
+    display: inline-block;
   }
 
-  #listview {
-    position: absolute;
-    top: 50px;
-    right: 50px;
-    z-index: 1;
-    background-color: white;
-    border-radius: 15px;
-    padding: 15px;
+  .listview {
+    width: 19%;
+    height: 100%;
+    overflow: auto;
+    display: inline-block;
   }
 }
 
-/* Map with a fixed height, with the list view below it */
+/* Map with a height of 80% of the screen, with the list view below it */
 @media (max-width: 699px) {
   .map-canvas {
-    height: 700px;
+    width: 100%;
+    height: 80%;
   }
 
-  #listview {
+  .listview {
     width: 100%;
+    height: 20%;
+    overflow: auto;
   }
 }
 

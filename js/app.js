@@ -13,7 +13,7 @@ var Place = function(name, location, filter) {
   this.visible = ko.computed(function() {
     return this.name.indexOf(filter()) !== -1;
   }, this);
-}
+};
 
 var Neighborhood = function() {
   this.location = {lat: 51.214089, lng: 4.414368};
@@ -33,14 +33,14 @@ var Neighborhood = function() {
       'Het steen',
       {lat: 51.222724, lng: 4.397364},
       this.filter));
-}
+};
 
 // ViewModel section.
 
 var ViewModel = function() {
   this.neighborhood = ko.observable(new Neighborhood());
   this.mapView = new MapView(this);
-}
+};
 
 // Populates the description of a place through an asynchronous callback to
 // Wikipedia.
@@ -65,15 +65,15 @@ ViewModel.prototype.populateContent = function(place) {
       place.content('Could not fetch content.');
       place.contentLoaded = false;
     }
-  })
-}
+  });
+};
 
 // View section.
 // The view of the map and its markers is described here.
 
 var MapView = function(viewmodel) {
   this.viewmodel = viewmodel;
-}
+};
 
 MapView.prototype.init = function(element, neighborhood) {
   var mapOptions = {
@@ -141,9 +141,13 @@ MapView.prototype.addMarker = function(place) {
 // Asynchronously loads the description of the place if needed,
 // and opens the info window.
 MapView.prototype.openInfoWindow = function(place, index) {
+  // Close all other info windows.
+  for (var i = 0; i < this.infowindows.length; ++i) {
+    this.infowindows[i].close();
+  }
   this.viewmodel.populateContent(place);
   this.infowindows[index].open(this.map, this.markers[index]);
-}
+};
 
 // Places the relevant marker on the map if the place is not filtered out.
 MapView.prototype.renderMarker = function(place, index) {
@@ -152,7 +156,7 @@ MapView.prototype.renderMarker = function(place, index) {
   } else {
     this.markers[index].setMap(null);
   }
-}
+};
 
 // Bindings between the model and the map view.
 
