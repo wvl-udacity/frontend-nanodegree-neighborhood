@@ -1,0 +1,54 @@
+html, body {
+  width: 100%;
+  margin: 0px;
+}
+
+.map-canvas {
+  width: 100%;
+}
+
+#filter_input {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  z-index: 1;
+  border-radius: 15px;
+  font-size: 17px;
+  width: 300px;
+}
+
+/* Full-screen map with a floating list view on the right */
+@media (min-width: 700px) {
+  html, body {
+    height: 100%;
+  }
+
+  .map-canvas {
+    height: 100%;
+  }
+
+  #listview {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    z-index: 1;
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+  }
+}
+
+/* Map with a fixed height, with the list view below it */
+@media (max-width: 699px) {
+  .map-canvas {
+    height: 700px;
+  }
+
+  #listview {
+    width: 100%;
+  }
+}
+
+.infowindow {
+  width: 200px;
+}
